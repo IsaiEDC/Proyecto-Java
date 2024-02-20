@@ -2,7 +2,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class conexionDB {
+public class ConexionDB {
     private static Connection conexion;
     private static String user = "root";
     private static String pwd = "root";

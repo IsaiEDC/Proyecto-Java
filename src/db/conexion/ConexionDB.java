@@ -1,4 +1,4 @@
-
+package db.conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -10,9 +10,7 @@ public class ConexionDB {
     private static int port = 3306;
     private static String url = "jdbc:mysql://localhost:" + port + "/" + db;
 
-    private void ConexionDB() {
-        
-    }
+    private  ConexionDB() {}
 
     public static Connection obtenerConnection() {
         try {

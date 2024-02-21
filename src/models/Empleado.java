@@ -8,7 +8,7 @@ public class Empleado {
     String domicilio;
     String telefono;
     String email;
-    Date fechanacimiento;
+    Date fechaNacimiento;
     Genero Genero;
     public Empleado(Long id, String nombre, String domicilio, String telefono, String email, Date fechanacimiento,
             models.Genero genero) {
@@ -17,7 +17,7 @@ public class Empleado {
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.email = email;
-        this.fechanacimiento = fechanacimiento;
+        this.fechaNacimiento = fechanacimiento;
         Genero = genero;
     }
     public Long getId() {
@@ -50,11 +50,11 @@ public class Empleado {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Date getFechanacimiento() {
-        return fechanacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
-    public void setFechanacimiento(Date fechanacimiento) {
-        this.fechanacimiento = fechanacimiento;
+    public void setFechaNacimiento(Date fechanacimiento) {
+        this.fechaNacimiento = fechanacimiento;
     }
     public Genero getGenero() {
         return Genero;

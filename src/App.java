@@ -1,5 +1,5 @@
 public class App {
-    public static void main(String[] args) {
-            System.out.println("hola mundo");
+    public static void main(String[] args) throws Exception {
+        System.out.println("HOLA MUNDO NO funciona nada de lo que estoy haciendo ya me desespere llevo 3 horas y nomas no avanzo nada ");
     }
 }

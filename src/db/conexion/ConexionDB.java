@@ -15,9 +15,9 @@ public class ConexionDB {
     public static Connection obtenerConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection(url, user, pwd);
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost/3306/base_de_datos","root","root");
             return conexion;
-        } catch (Exception ex) {
+        } catch (Exception e) {
             System.out.println("Error al conectar la base de datos");
         }
         return null;

@@ -28,4 +28,4 @@ FOREIGN KEY (id_genero)
 REFERENCES generos(id_genero)
 );
 
--- quiubo
+-- quiubo x2

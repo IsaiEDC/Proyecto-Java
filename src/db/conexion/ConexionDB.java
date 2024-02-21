@@ -6,7 +6,7 @@ public class ConexionDB {
     private static Connection conexion;
     private static String user = "root";
     private static String pwd = "root";
-    private static String db = "base de datos";
+    private static String db = "empleados";
     private static int port = 3306;
     private static String url = "jdbc:mysql://localhost:" + port + "/" + db;
 
@@ -15,7 +15,8 @@ public class ConexionDB {
     public static Connection obtenerConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/3306/base_de_datos","root","root");
+            conexion = DriverManager.getConnection(url,user,pwd);
+            System.out.println("Conoxión a la base de datos exitosa");
             return conexion;
         } catch (Exception e) {
             System.out.println("Error al conectar la base de datos");

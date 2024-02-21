@@ -27,3 +27,5 @@ CONSTRAINT empleado_id_genero_generos_id_genero
 FOREIGN KEY (id_genero)
 REFERENCES generos(id_genero)
 );
+
+-- quiubo

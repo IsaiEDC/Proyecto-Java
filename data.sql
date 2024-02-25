@@ -28,4 +28,11 @@ FOREIGN KEY (id_genero)
 REFERENCES generos(id_genero)
 );
 
+
+INSERT INTO generos VALUES
+(1, "FEMENINO");
+(2, "MASCULINO");
+(3, Null);
+
+
 -- quiubo x2

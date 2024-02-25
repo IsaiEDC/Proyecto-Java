@@ -10,13 +10,15 @@ import interfaces.RepositoryInterfaces;
 import models.Genero;
 
 public class GenerosRepository implements RepositoryInterfaces<Genero> {
+
     @Override
     public Genero recuperarId(Long id) {
+            //obtengo conexion
         try (Connection connection = ConexionDB.obtenerConnection()) {
-
             String q = "SELECT * FROM  generos WHERE id = ?";
+            //entro a la consulta
             try (
-                    PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(q)) {
                 preparedStatement.setLong(1, id);
                 return dameEntidadResultSet(preparedStatement.executeQuery());
 
@@ -54,7 +56,7 @@ public class GenerosRepository implements RepositoryInterfaces<Genero> {
         throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
     }
 
-    private Genero dameEntidadResultSet(ResultSet resultSet) {
+    private Genero dameEntidadResultSet(ResultSet resultSet){
         Long id = 0L;
         String nombre = "";
         try {
@@ -63,7 +65,6 @@ public class GenerosRepository implements RepositoryInterfaces<Genero> {
                 nombre = resultSet.getString("nombre");
             }
             return new Genero(id, nombre);
-
         } catch (Exception e) {
             System.out.println("Error al recuperar resulSet");
         }

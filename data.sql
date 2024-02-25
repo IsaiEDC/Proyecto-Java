@@ -30,9 +30,9 @@ REFERENCES generos(id_genero)
 
 
 INSERT INTO generos VALUES
-(1, "FEMENINO");
-(2, "MASCULINO");
-(3, Null);
+(1, "FEMENINO"),
+(2, "MASCULINO"),
+(3, NULL)
 
 
 -- quiubo x2

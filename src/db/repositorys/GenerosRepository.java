@@ -79,9 +79,10 @@ public class GenerosRepository implements RepositoryInterfaces<Genero> {
     @Override
     public void modificar(Genero entidad) {
     try (Connection connection = ConexionDB.obtenerConnection()) {
-        String q = "UPDATE generos SET nombre = ? WHERE id = ?";
+        String q = "UPDATE generos SET nombre = ? WHERE id_genero = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(q)){
             preparedStatement.setString(1, entidad.getNombre());
+            preparedStatement.setLong(2, entidad.getId());
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error en la consulta "+e.getMessage());

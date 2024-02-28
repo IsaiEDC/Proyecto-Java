@@ -11,9 +11,10 @@ public class App {
         EmpleadosRepository empleadosRepository = new EmpleadosRepository();
         Empleado e = empleadosRepository.recuperarId(1L);
         System.out.println(e.getNombre());
-        /*List<Genero> generos = generosRepository.recuperarTodos();
-        for (Genero genero : generos) {
-            System.out.println(genero.getNombre());
-        } */
+       //List<Genero> generos = generosRepository.recuperarTodos();
+       //for (Genero genero : generos) {
+       //    System.out.println(genero.getNombre());
+       //} 
+
     }
 }

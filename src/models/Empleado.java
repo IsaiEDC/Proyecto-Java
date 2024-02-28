@@ -18,7 +18,7 @@ public class Empleado {
         this.telefono = telefono;
         this.email = email;
         this.fechaNacimiento = fechanacimiento;
-        genero = genero;
+        this.genero = genero;
     }
     public Long getId() {
         return id;
@@ -60,6 +60,6 @@ public class Empleado {
         return genero;
     }
     public void setGenero(Genero genero) {
-        genero = genero;
+        this.genero = genero;
     }
 }

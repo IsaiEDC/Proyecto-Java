@@ -95,7 +95,7 @@ public class GenerosRepository implements RepositoryInterfaces<Genero> {
     @Override
     public void eliminar(Genero entidad) {
             try (Connection connection = ConexionDB.obtenerConnection()) {
-                String q = "DELETE FROM generos WHERE id = ?";
+                String q = "DELETE FROM generos WHERE id_genero = ?";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
                     preparedStatement.setLong(1, entidad.getId());
                     preparedStatement.executeUpdate();

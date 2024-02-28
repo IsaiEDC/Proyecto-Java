@@ -16,7 +16,7 @@ public class ConexionDB {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexion = DriverManager.getConnection(url,user,pwd);
-            System.out.println("Conoxión a la base de datos exitosa");
+            //System.out.println("Conoxión a la base de datos exitosa");
             return conexion;
         } catch (Exception e) {
             System.out.println("Error al conectar la base de datos");

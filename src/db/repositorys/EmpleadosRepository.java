@@ -22,8 +22,7 @@ public class EmpleadosRepository implements RepositoryInterfaces<Empleado> {
         try (Connection connection = ConexionDB.obtenerConnection()) {
             String q = "SELECT * FROM empleados WHERE id_empleado = ?";
 
-            try (
-                    PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
                 preparedStatement.setLong(1, id);
                 return dameEntidadResultSet(preparedStatement.executeQuery());
             } catch (Exception e) {
@@ -84,20 +83,58 @@ public class EmpleadosRepository implements RepositoryInterfaces<Empleado> {
 
     @Override
     public void agregar(Empleado entidad) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregar'");
+
+         try (Connection connection = ConexionDB.obtenerConnection()) {
+            String q = "INSERT INTO  empleados VALUES (NUll, ?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+                preparedStatement.setString(1, entidad.getNombre());
+                preparedStatement.setString(2, entidad.getDomicilio());
+                preparedStatement.setString(3, entidad.getTelefono());
+                preparedStatement.setString(4, entidad.getEmail());
+                preparedStatement.setDate(5,entidad.getFechaNacimiento());
+                preparedStatement.setLong(6, entidad.getGenero().getId());
+            } catch (Exception e) {
+                System.out.println("Error en la consulta: "+e.getMessage());
+            }
+         } catch (Exception e) {
+            System.out.println("Error en conectar a la base de datos: "+e.getMessage());
+         }
     }
 
     @Override
-    public void modificar(Empleado entidaa) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'modificar'");
+    public void modificar(Empleado entidad) {
+        try (Connection connection = ConexionDB.obtenerConnection()) {
+            String q = "UPDATE empleados SET nombre = ?, ?, ?, ?, ?, ?   WHERE id_empleado = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+                preparedStatement.setString(1, entidad.getNombre());
+                preparedStatement.setString(2, entidad.getDomicilio());
+                preparedStatement.setString(3, entidad.getTelefono());
+                preparedStatement.setString(4, entidad.getEmail());
+                preparedStatement.setDate(5,entidad.getFechaNacimiento());
+                preparedStatement.setLong(6, entidad.getGenero().getId());
+                preparedStatement.setLong(7, entidad.getId());
+                preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Error en la consulta: "+e.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la conexion a la base de datos: "+e.getMessage());
+        }
     }
 
     @Override
     public void eliminar(Empleado entidad) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
+        try (Connection connection = ConexionDB.obtenerConnection()) {
+            String q = "DELETE FROM empleados WHERE id_empleado = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+                preparedStatement.setLong(1, entidad.getId());
+                preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Error en la consulta: "+e.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println("Error al conectar: "+e.getMessage());
+        }
     }
 
         private Empleado dameEntidadResultSet(ResultSet resultSet) {

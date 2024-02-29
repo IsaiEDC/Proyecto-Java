@@ -1,13 +1,13 @@
-DROP DATABASE IF EXISTS empleados;
-CREATE DATABASE  empleados;
-USE empleados;
+DROP DATABASE IF EXISTS empleadoscrud;
+CREATE DATABASE  empleadoscrud;
+USE empleadoscrud;
 
 CREATE TABLE login (
 id int auto_increment primary key,
 nombre varchar (100),
 email varchar (100),
 usuario varchar (100),
-contraseña varchar (100)
+contrasenia varchar (100)
 );
 
 CREATE TABLE generos (
@@ -19,7 +19,7 @@ CREATE TABLE empleados (
 id_empleado int auto_increment primary key,
 nombre varchar (100),
 domicilio varchar (100),
-telefono varchar (12),
+telefono varchar (15),
 email varchar (100),
 fecha_de_nacimiento date,
 id_genero int,
@@ -45,4 +45,6 @@ INSERT INTO empleados VALUES (null, "Sofía Ramírez", "Paseo de los Tamarindos 
 INSERT INTO empleados VALUES (null, "Jorge Herrera", "Calle Chapultepec 789", "55-8888-7777", "jorge@example.com", "1987-04-03", 1);
 INSERT INTO empleados VALUES (null, "Elena Castro", "Avenida Insurgentes Norte 123", "55-3333-4444", "elena@example.com", "1991-06-28", 2);
 
+INSERT INTO login VALUES 
+(null, 'Isai', 'Isai@test.com', 'root', 'root' );
 -- quiubo x2

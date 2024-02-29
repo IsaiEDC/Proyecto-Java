@@ -34,33 +34,29 @@ public class EmpleadosRepository implements RepositoryInterfaces<Empleado> {
         return null;
     }
 
-
-
     @Override
     public List<Empleado> recuperarTodos() {
         try (Connection connection = ConexionDB.obtenerConnection()) {
-            String q = "SELECT * FROM empledos";
+            String q = "SELECT * FROM empleados";
             Statement statement = connection.createStatement();
             return dameListaEmpleados(statement.executeQuery(q));
         } catch (Exception e) {
-           System.out.println("Error en la conexion: "+e.getMessage());
+            System.out.println("Error en la conexion: " + e.getMessage());
         }
         return null;
     }
 
-
-    
     private List<Empleado> dameListaEmpleados(ResultSet resultSet) {
-        List <Empleado> empleados = new ArrayList<>();
-        Long id = null;
-        String nombre = null;
-        String domicilio = null;
-        String telefono = null;
-        String email = null;
-        Date fechaNacimiento = null;
-        Long generoId = null;
-        Genero genero = null;
+        List<Empleado> empleados = new ArrayList<>();
         try {
+            Long id = null;
+            String nombre = null;
+            String domicilio = null;
+            String telefono = null;
+            String email = null;
+            Date fechaNacimiento = null;
+            Long generoId = null;
+            Genero genero = null;
             while (resultSet.next()) {
                 id = resultSet.getLong("id_empleado");
                 nombre = resultSet.getString("nombre");
@@ -70,55 +66,54 @@ public class EmpleadosRepository implements RepositoryInterfaces<Empleado> {
                 fechaNacimiento = resultSet.getDate("fecha_de_nacimiento");
                 generoId = resultSet.getLong("id_genero");
                 genero = generosRepository.recuperarId(generoId);
-                empleados.add(new Empleado(generoId, nombre, domicilio, telefono, email, fechaNacimiento, genero));
+                empleados.add(new Empleado(id, nombre, domicilio, telefono, email, fechaNacimiento, genero));
             }
             return empleados;
         } catch (Exception e) {
-            System.out.println("Error en el result: "+e.getMessage());
+            System.out.println("Error en el result: " + e.getMessage());
         }
         return null;
     }
 
-
-
     @Override
     public void agregar(Empleado entidad) {
 
-         try (Connection connection = ConexionDB.obtenerConnection()) {
+        try (Connection connection = ConexionDB.obtenerConnection()) {
             String q = "INSERT INTO  empleados VALUES (NUll, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
                 preparedStatement.setString(1, entidad.getNombre());
                 preparedStatement.setString(2, entidad.getDomicilio());
                 preparedStatement.setString(3, entidad.getTelefono());
                 preparedStatement.setString(4, entidad.getEmail());
-                preparedStatement.setDate(5,entidad.getFechaNacimiento());
+                preparedStatement.setDate(5, entidad.getFechaNacimiento());
                 preparedStatement.setLong(6, entidad.getGenero().getId());
+                preparedStatement.execute();
             } catch (Exception e) {
-                System.out.println("Error en la consulta: "+e.getMessage());
+                System.out.println("Error en la consulta: " + e.getMessage());
             }
-         } catch (Exception e) {
-            System.out.println("Error en conectar a la base de datos: "+e.getMessage());
-         }
+        } catch (Exception e) {
+            System.out.println("Error en conectar a la base de datos: " + e.getMessage());
+        }
     }
 
     @Override
     public void modificar(Empleado entidad) {
         try (Connection connection = ConexionDB.obtenerConnection()) {
-            String q = "UPDATE empleados SET nombre = ?, ?, ?, ?, ?, ?   WHERE id_empleado = ?";
+            String q = "UPDATE empleados SET nombre = ?, domicilio= ?, telefono= ?, email= ?, fecha_de_nacimiento= ?, id_genero= ?   WHERE id_empleado = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
                 preparedStatement.setString(1, entidad.getNombre());
                 preparedStatement.setString(2, entidad.getDomicilio());
                 preparedStatement.setString(3, entidad.getTelefono());
                 preparedStatement.setString(4, entidad.getEmail());
-                preparedStatement.setDate(5,entidad.getFechaNacimiento());
+                preparedStatement.setDate(5, entidad.getFechaNacimiento());
                 preparedStatement.setLong(6, entidad.getGenero().getId());
                 preparedStatement.setLong(7, entidad.getId());
                 preparedStatement.executeUpdate();
             } catch (Exception e) {
-                System.out.println("Error en la consulta: "+e.getMessage());
+                System.out.println("Error en la consulta: " + e.getMessage());
             }
         } catch (Exception e) {
-            System.out.println("Error en la conexion a la base de datos: "+e.getMessage());
+            System.out.println("Error en la conexion a la base de datos: " + e.getMessage());
         }
     }
 
@@ -130,14 +125,14 @@ public class EmpleadosRepository implements RepositoryInterfaces<Empleado> {
                 preparedStatement.setLong(1, entidad.getId());
                 preparedStatement.executeUpdate();
             } catch (Exception e) {
-                System.out.println("Error en la consulta: "+e.getMessage());
+                System.out.println("Error en la consulta: " + e.getMessage());
             }
         } catch (Exception e) {
-            System.out.println("Error al conectar: "+e.getMessage());
+            System.out.println("Error al conectar: " + e.getMessage());
         }
     }
 
-        private Empleado dameEntidadResultSet(ResultSet resultSet) {
+    private Empleado dameEntidadResultSet(ResultSet resultSet) {
             Long id = null;
             String nombre = null;
             String domicilio = null;

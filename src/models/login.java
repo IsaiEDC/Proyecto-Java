@@ -1,17 +1,17 @@
 package models;
 
-public class login {
+public class Login {
     Long id;
     String nombre;
     String email;
     String usuario;
-    String contraseña;
-    public login(Long id, String nombre, String email, String usuario, String contraseña) {
+    String contrasenia;
+    public Login(Long id, String nombre, String email, String usuario, String contrasenia) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.usuario = usuario;
-        this.contraseña = contraseña;
+        this.contrasenia = contrasenia;
     }
     public Long getId() {
         return id;
@@ -37,10 +37,10 @@ public class login {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasenia() {
+        return contrasenia;
     }
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 }

@@ -11,8 +11,18 @@ public class Empleado {
     Date fechaNacimiento;
     Genero genero;
     public Empleado(Long id, String nombre, String domicilio, String telefono, String email, Date fechanacimiento,
-            models.Genero genero) {
+            Genero genero) {
         this.id = id;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.email = email;
+        this.fechaNacimiento = fechanacimiento;
+        this.genero = genero;
+    }
+    public Empleado(String nombre, String domicilio, String telefono, String email, Date fechanacimiento,
+            Genero genero) {
+        this.id = null;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
@@ -61,5 +71,10 @@ public class Empleado {
     }
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return this.id + " : "+this.nombre;
     }
 }

@@ -3,6 +3,7 @@ package screens;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -180,14 +181,12 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == guardarJButton) {
-  
+
             String nombre = nombreJTextField.getText();
             String domicilio = domicilioJTextField.getText();
             String telefono = telefonoJTextField.getText();
-            String email = emailJTextField.getText();          
-            
-            
-             System.out.println("Guardando...");
+            String email = emailJTextField.getText();
+            System.out.println("Guardando...");
 
         }
         if (e.getSource() == modificarJButton) {
@@ -196,7 +195,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
             String telefono = telefonoJTextField.getText();
             String email = emailJTextField.getText();
 
-             System.out.println("Modificando...");
+            System.out.println("Modificando...");
 
         }
         if (e.getSource() == eliminarJButton) {
@@ -204,15 +203,24 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
             String domicilio = domicilioJTextField.getText();
             String telefono = telefonoJTextField.getText();
             String email = emailJTextField.getText();
+
             System.out.println("Eliminando...");
 
         }
-        if (e.getSource() == limpiarJButton);
-        String nombre = nombreJTextField.getText();
-        String domicilio = domicilioJTextField.getText();
-        String telefono = telefonoJTextField.getText();
-        String email = emailJTextField.getText();
-        System.out.println("Limpiando...");
+        if (e.getSource() == limpiarJButton) {
+            String nombre = nombreJTextField.getText();
+            String domicilio = domicilioJTextField.getText();
+            String telefono = telefonoJTextField.getText();
+            String email = emailJTextField.getText();
 
+            System.out.println("Limpiando...");
+        }
+    }
+
+    private void llenarConboBox() {
+        List<Genero> generos = generosRepository.recuperarTodos();
+        for (Genero genero : generos) {
+            generoJBomboBox.addItem(genero.getNombre());
+        }
     }
 }

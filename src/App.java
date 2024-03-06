@@ -13,6 +13,6 @@ public class App {
         LoginRepository loginRepository = new LoginRepository();
         Login l = new Login(null, "A6z", "a6z@test.com", "adminbluedeep", "batman");
         loginRepository.agregar(l);
-        System.out.println();
+        System.out.println("hola");
     }
 }

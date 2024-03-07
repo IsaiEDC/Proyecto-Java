@@ -19,6 +19,7 @@ import com.toedter.calendar.JDateChooser;
 import db.repositorys.EmpleadosRepository;
 import db.repositorys.GenerosRepository;
 import models.Empleado;
+import models.Genero;
 
 public class EmpleadosVentana extends JFrame implements ActionListener {
 
@@ -44,6 +45,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
     JButton modificarJButton;
     JButton eliminarJButton;
     JButton limpiarJButton;
+    
 
     public EmpleadosVentana() {
         super("Empleados CRUD");
@@ -76,6 +78,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         modificarJButton = new JButton("modificar");
         eliminarJButton = new JButton("eliminar");
         limpiarJButton = new JButton("limpiar");
+        llenarConboBox();
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -220,7 +223,11 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
     private void llenarConboBox() {
         List<Genero> generos = generosRepository.recuperarTodos();
         for (Genero genero : generos) {
-            generoJBomboBox.addItem(genero.getNombre());
+            generoJComboBox.addItem(genero.getNombre());
+        }
+        List<Empleado> empleados = empleadosRepository.recuperarTodos();
+        for (Empleado empleado : empleados) {
+            numeroEmpledoJComboBox.addItem(empleado.getId());
         }
     }
 }

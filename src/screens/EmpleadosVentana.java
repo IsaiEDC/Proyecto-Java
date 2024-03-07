@@ -195,12 +195,8 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
             modificandoEmpleado();
         }
         if (e.getSource() == eliminarJButton) {
-            String nombre = nombreJTextField.getText();
-            String domicilio = domicilioJTextField.getText();
-            String telefono = telefonoJTextField.getText();
-            String email = emailJTextField.getText();
-
             System.out.println("Eliminando...");
+            empleadoEliminar();
 
         }
         if (e.getSource() == limpiarJButton) {
@@ -216,6 +212,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
             recuperarEmpleado();
         }
     }
+
 
     private void llenarConboBox() {
         List<Genero> generos = generosRepository.recuperarTodos();
@@ -258,6 +255,10 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
 
     }
 
+    private void empleadoEliminar() {
+        // TODO Implementar eliminar
+        empleado = empleadosRepository.recuperarId((long)(numeroEmpledoJComboBox.getSelectedItem()));
+    }
 
 
     private void recuperarEmpleado() {
@@ -281,7 +282,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         return -1;
     }
 
-    
+
     private void limpiarCampo() {
         empleado = null;
         nombreJTextField.setText("");

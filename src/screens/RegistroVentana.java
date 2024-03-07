@@ -8,5 +8,7 @@ public class RegistroVentana extends JFrame{
         setSize(300, 300);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        
     }
 }

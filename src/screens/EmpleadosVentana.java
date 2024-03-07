@@ -45,7 +45,6 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
     JButton modificarJButton;
     JButton eliminarJButton;
     JButton limpiarJButton;
-    
 
     public EmpleadosVentana() {
         super("Empleados CRUD");
@@ -67,10 +66,10 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         fechaJLabel = new JLabel("Fecha");
         generoJLabel = new JLabel("Genero");
         numeroEmpledoJComboBox = new JComboBox<Long>();
-        nombreJTextField = new JTextField("Nombre");
-        domicilioJTextField = new JTextField("domicilio");
-        telefonoJTextField = new JTextField("telefono");
-        emailJTextField = new JTextField("email");
+        nombreJTextField = new JTextField();
+        domicilioJTextField = new JTextField();
+        telefonoJTextField = new JTextField();
+        emailJTextField = new JTextField();
         fechaJDateChooser = new JDateChooser();
         generoJComboBox = new JComboBox<>();
         buscarJButton = new JButton("buscar");
@@ -98,6 +97,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
 
         gbc.gridx = 2;
         gbc.gridwidth = 2; /* numero de columnas que ocupa */
+        buscarJButton.addActionListener(this);
         add(buscarJButton, gbc);
         // hasta aqui todo bien
 
@@ -218,7 +218,17 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
 
             System.out.println("Limpiando...");
         }
+        if(e.getSource()==buscarJButton){
+            System.out.println("Buscando...");    
+            Long id = (Long)(numeroEmpledoJComboBox.getSelectedItem());
+            Empleado empleado = empleadosRepository.recuperarId(id);
+        nombreJTextField.setText(empleado.getNombre());
+        domicilioJTextField.setText(empleado.getDomicilio());
+        telefonoJTextField.setText(empleado.getTelefono());
+        emailJTextField.setText(empleado.getEmail());
+        }
     }
+
 
     private void llenarConboBox() {
         List<Genero> generos = generosRepository.recuperarTodos();
@@ -230,4 +240,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
             numeroEmpledoJComboBox.addItem(empleado.getId());
         }
     }
+
+
+
 }

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -241,6 +242,54 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         }
     }
 
+    private void recuperarEmpleado(){
+        if(numeroEmpledoJComboBox.getSelectedItem().equals(""));
+        JOptionPane.showConfirmDialog(
+            null,
+            "Todos los datos son requeridos",
+            "Confirmación",
+            JOptionPane.CLOSED_OPTION);
+        
+
+    }
+
+
+
+
+    private void limpiarCampo() {
+        empleado = null;
+        nombreJTextField.setText("");
+        domicilioJTextField.setText("");
+        telefonoJTextField.setText("");
+        emailJTextField.setText("");
+        fechaJDateChooser.setDate(null);
+        numeroEmpledoJComboBox.removeAllItems();
+        generoJComboBox.removeAllItems();
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+    //private Empleado dameEmpleado() {
+    //    Long l =(Long) (generoJComboBox.getSelectedItem());
+    //    Genero genero = generosRepository.recuperarId(l);
+    //    java.util.Date utilDate = fechaJDateChooser.getDate();
+    //    java.sql.Date fecha = new java.sql.Date(utilDate.getTime());
+    //    Empleado empleado = new Empleado(
+    //        null,
+    //        nombreJTextField.getText(),
+    //        domicilioJTextField.getText(),
+    //        telefonoJTextField.getText(),
+    //        emailJTextField.getText(),
+    //        fecha,
+    //        genero);
+    //    return empleado;
+    //}

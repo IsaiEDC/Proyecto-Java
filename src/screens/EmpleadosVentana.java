@@ -260,7 +260,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
 
 
 
-    private void recuperarEmpleado() {-
+    private void recuperarEmpleado() {
        empleado = empleadosRepository.recuperarId((long)(numeroEmpledoJComboBox.getSelectedItem()));
        nombreJTextField.setText(empleado.getNombre());
        domicilioJTextField.setText(empleado.getDomicilio());
@@ -269,6 +269,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
        fechaJDateChooser.setDate(empleado.getFechaNacimiento());
        generoJComboBox.setSelectedIndex(compararGenero(empleado.getGenero()));
     }
+
 
     private int compararGenero(Genero genero) {
        
@@ -280,6 +281,7 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         return -1;
     }
 
+    
     private void limpiarCampo() {
         empleado = null;
         nombreJTextField.setText("");

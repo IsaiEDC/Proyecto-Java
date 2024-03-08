@@ -289,7 +289,11 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         numeroEmpledoJComboBox.removeAllItems();
         generoJComboBox.removeAllItems();
     }
+}
 
+
+    /*? Esto no funciono pero no lo borre perdon jaja */
+    
     //private Empleado dameEmpleado() {
     //    Long l = (Long) (generoJComboBox.getSelectedItem());
     //    Genero genero = generosRepository.recuperarId(l);
@@ -305,5 +309,3 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
     //            genero);
     //    return empleado;
     //}
-
-}

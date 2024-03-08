@@ -9,6 +9,7 @@ import models.Genero;
 import models.Login;
 import screens.EmpleadosVentana;
 import screens.LoginVentana;
+import screens.RegistroVentana;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -16,9 +17,17 @@ public class App {
         //Login l = new Login(null, "A6z", "a6z@test.com", "adminbluedeep", "batman");
         //loginRepository.agregar(l);
         //System.out.println("");
-        //LoginVentana loginVentana = new LoginVentana("Iniciar sesión");
-        //loginVentana.setVisible(true);
-        EmpleadosVentana empleadosVentana = new EmpleadosVentana();
-        empleadosVentana.setVisible(true);
+
+
+        LoginVentana loginVentana = new LoginVentana("Iniciar secion");
+        loginVentana.setVisible(true);
+        
+
+
+        //EmpleadosVentana empleadosVentana = new EmpleadosVentana();
+        //empleadosVentana.setVisible(true);
+
+        //RegistroVentana registroVentana = new RegistroVentana();
+        //registroVentana.setVisible(true);
     }
 }

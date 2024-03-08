@@ -74,12 +74,10 @@ public class LoginVentana extends JFrame implements ActionListener {
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
-        // ! agregar la acción al componente
         iniciarButton.addActionListener(this);
         add(iniciarButton, gbc);
 
         gbc.gridx = 2;
-        // ! agregar la acción al componente
         registrarButton.addActionListener(this);
         add(registrarButton, gbc);
     }
@@ -92,7 +90,6 @@ public class LoginVentana extends JFrame implements ActionListener {
             char pwd[] = contraseniaJPasswordField.getPassword();
             System.out.println("User: "+usuario);
             System.out.println("pwd: "+Arrays.toString(pwd));
-            // TODO: Validar usuario y contraseña si esta chido lanzas empleados ventana
             EmpleadosVentana empleadosVentana = new EmpleadosVentana();
             empleadosVentana.setVisible(true);
             dispose();

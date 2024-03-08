@@ -200,12 +200,8 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
 
         }
         if (e.getSource() == limpiarJButton) {
-            String nombre = nombreJTextField.getText();
-            String domicilio = domicilioJTextField.getText();
-            String telefono = telefonoJTextField.getText();
-            String email = emailJTextField.getText();
-
             System.out.println("Limpiando...");
+            limpiarCampo();
         }
         if (e.getSource() == buscarJButton) {
             System.out.println("Buscando...");
@@ -256,8 +252,8 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
     }
 
     private void empleadoEliminar() {
-        // TODO Implementar eliminar
         empleado = empleadosRepository.recuperarId((long)(numeroEmpledoJComboBox.getSelectedItem()));
+        empleadosRepository.eliminar(empleado);
     }
 
 
@@ -294,20 +290,20 @@ public class EmpleadosVentana extends JFrame implements ActionListener {
         generoJComboBox.removeAllItems();
     }
 
-    private Empleado dameEmpleado() {
-        Long l = (Long) (generoJComboBox.getSelectedItem());
-        Genero genero = generosRepository.recuperarId(l);
-        java.util.Date utilDate = fechaJDateChooser.getDate();
-        java.sql.Date fecha = new java.sql.Date(utilDate.getTime());
-        Empleado empleado = new Empleado(
-                null,
-                nombreJTextField.getText(),
-                domicilioJTextField.getText(),
-                telefonoJTextField.getText(),
-                emailJTextField.getText(),
-                fecha,
-                genero);
-        return empleado;
-    }
+    //private Empleado dameEmpleado() {
+    //    Long l = (Long) (generoJComboBox.getSelectedItem());
+    //    Genero genero = generosRepository.recuperarId(l);
+    //    java.util.Date utilDate = fechaJDateChooser.getDate();
+    //    java.sql.Date fecha = new java.sql.Date(utilDate.getTime());
+    //    Empleado empleado = new Empleado(
+    //            null,
+    //            nombreJTextField.getText(),
+    //            domicilioJTextField.getText(),
+    //            telefonoJTextField.getText(),
+    //            emailJTextField.getText(),
+    //            fecha,
+    //            genero);
+    //    return empleado;
+    //}
 
 }
